@@ -1,0 +1,1 @@
+    for(int i=1;i<=210;i++) cout<<i<<" "<<miu[i]<<endl;

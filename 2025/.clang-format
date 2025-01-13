@@ -1,0 +1,19 @@
+# Set the style of the code
+BasedOnStyle: Google
+
+# Define the number of spaces for indentation
+IndentWidth: 4
+
+# Use spaces for indentation (instead of tabs)
+UseTab: Never
+
+
+# Specify whether to break the code after opening parentheses
+BreakBeforeBraces: Stroustrup
+
+# Maximum number of characters per line before wrapping
+ColumnLimit: 100
+
+# Add space around operators
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: Never
