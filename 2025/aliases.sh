@@ -3,7 +3,7 @@
 acm() {
 
 
-    if [ $# -ne 2 ]; then
+    if [ $# -lt 2 ]; then
         echo "Please input the correct parameters: "
         echo "  acm np [folder_name] [create_file_quantity]"
         echo "  acm run [cpp_file_name]"
@@ -63,6 +63,14 @@ acm() {
         echo "操作完成！"
     
     elif [ "$identifier" = "run" ]; then
+
+        if [ $# -ne 2 ]; then
+            echo "Please input the correct parameters: "
+            echo "  acm np [folder_name] [create_file_quantity]"
+            echo "  acm run [cpp_file_name]"
+            return 1
+        fi
+
 
         /Users/wsy/Back_end/ACM/2025/run_code.sh $2
 
