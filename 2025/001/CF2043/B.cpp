@@ -30,34 +30,26 @@ inline void read(T& x)
 }
 
 int T;
-int n, a[N], k, l;
+int a, b;
 
 void solve()
 {
-    read(n), read(k), read(l);
-    k *= 2;
-    l *= 2;
+    read(a), read(b);
 
-    for(int i = 1; i <= n; i++) read(a[i]), a[i] *= 2;
+    vector<int> ans;
+    ans.push_back(1);
 
-    int x = k, ans = a[1];
-    for(int i = 2; i <= n; i++) {
-        if(a[i] > x) {
-            a[i] = max(x, a[i] - ans);
-            ans += (a[i] - x) / 2;
-            x = (x + a[i]) / 2 + k;
-        }
-        else {
-            a[i] = min(x, a[i] + ans);
-            x = a[i] + k;
-        }
-    }
+    if(b % 3 == 0 || a >= 3) ans.push_back(3);
 
-    if(x < l) {
-        ans += (l - x);
-    }
+    if(b == 5) ans.push_back(5);
 
-    printf("%d\n", ans);
+    if(b == 7 || a >= 3) ans.push_back(7);
+
+    if(b % 9 == 0 || (b % 3 == 0 && a >= 3) || (a >= 6)) ans.push_back(9);
+
+    for(auto i : ans) printf("%d ", i);
+
+    cout << endl;
 }
 
 int main()

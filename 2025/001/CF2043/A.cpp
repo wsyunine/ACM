@@ -30,34 +30,12 @@ inline void read(T& x)
 }
 
 int T;
-int n, a[N], k, l;
+long long n;
 
 void solve()
 {
-    read(n), read(k), read(l);
-    k *= 2;
-    l *= 2;
-
-    for(int i = 1; i <= n; i++) read(a[i]), a[i] *= 2;
-
-    int x = k, ans = a[1];
-    for(int i = 2; i <= n; i++) {
-        if(a[i] > x) {
-            a[i] = max(x, a[i] - ans);
-            ans += (a[i] - x) / 2;
-            x = (x + a[i]) / 2 + k;
-        }
-        else {
-            a[i] = min(x, a[i] + ans);
-            x = a[i] + k;
-        }
-    }
-
-    if(x < l) {
-        ans += (l - x);
-    }
-
-    printf("%d\n", ans);
+    read(n);
+    printf("%lld\n", (1ULL << (long long)(log2((long double)n) / 2.0)));
 }
 
 int main()
