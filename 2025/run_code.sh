@@ -24,7 +24,7 @@ OUTPUT_FILE="$DIR/$BASE_NAME"
 
 # 编译源文件
 echo "Compiling '$SOURCE_FILE'..."
-g++ -o "$OUTPUT_FILE" "$SOURCE_FILE"
+g++ -std=c++2b -o "$OUTPUT_FILE" "$SOURCE_FILE"
 
 # 检查编译是否成功
 if [ "$?" -ne 0 ]; then
