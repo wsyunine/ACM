@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -30,16 +29,32 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int T;
-
-void solve() {}
+int n;
+string s;
+int mapp[N];
+int res = 0;
 
 int main()
 {
-    read(T);
-    while(T--) {
-        solve();
+    read(n);
+    cin >> s;
+    s = ' ' + s;
+
+    for(int i = 1; i <= n; i++) {
+        if(!mapp[s[i]])
+            mapp[s[i]] = i;
+        else
+            res = max(res, mapp[s[i]]), mapp[s[i]] = i;
     }
+    for(int i = 'a'; i <= 'z'; i++) mapp[i] = 0;
+    for(int i = n; i >= 1; i--) {
+        if(!mapp[s[i]])
+            mapp[s[i]] = i;
+        else
+            res = max(res, n - mapp[s[i]] + 1), mapp[s[i]] = i;
+    }
+
+    cout << ((res == 1) ? 0 : res) << endl;
 
     return 0;
 }

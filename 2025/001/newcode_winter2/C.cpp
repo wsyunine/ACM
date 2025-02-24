@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -30,14 +29,32 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int T;
+int n, m;
+int a[N];
+int t;
 
-void solve() {}
+void solve()
+{
+    read(n), read(m);
+    if(m >= n) {
+        printf("NO\n");
+        return;
+    }
+
+    if(n > m + 26) {
+        printf("NO\n");
+        return;
+    }
+
+    printf("YES\n");
+
+    printf("\n");
+}
 
 int main()
 {
-    read(T);
-    while(T--) {
+    read(t);
+    while(t--) {
         solve();
     }
 

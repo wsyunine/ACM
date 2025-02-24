@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -30,16 +29,37 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int T;
+int n;
+int a[N];
 
-void solve() {}
+bool check(int x)
+{
+    int sum = 0;
+    for(int i = 1; i <= n; i++)
+        if(a[i] > x) sum++;
+    if(sum >= (n + 1) / 2)
+        return 1;
+    else
+        return 0;
+}
 
 int main()
 {
-    read(T);
-    while(T--) {
-        solve();
+    read(n);
+    for(int i = 1; i <= n; i++) {
+        read(a[i]);
     }
+
+    int l = 0, r = 1e6;
+    while(l < r) {
+        int mid = (l + r + 1) >> 1;
+        if(check(mid))
+            l = mid;
+        else
+            r = mid - 1;
+    }
+
+    cout << l << endl;
 
     return 0;
 }

@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -30,15 +29,19 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int T;
-
-void solve() {}
+int t;
+int a, b, c, d;
 
 int main()
 {
-    read(T);
-    while(T--) {
-        solve();
+    read(t);
+    while(t--) {
+        read(a), read(b), read(c), read(d);
+
+        if(b - a >= d - c)
+            printf("%d %d\n%d %d\n%d %d\n", a, d - 1, b - 1, d, b, d);
+        else
+            printf("%d %d\n%d %d\n%d %d\n", a + 1, c, a, d - 1, a, d);
     }
 
     return 0;

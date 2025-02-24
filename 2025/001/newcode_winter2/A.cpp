@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -30,16 +29,21 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int T;
-
-void solve() {}
+int n;
+int a[N];
 
 int main()
 {
-    read(T);
-    while(T--) {
-        solve();
+    int idea = 1;
+    for(int i = 1; i <= 7; i++) {
+        read(a[i]);
+        if(a[i] != 1 && a[i] != 2 && a[i] != 3 && a[i] != 5 && a[i] != 6) idea = 0;
     }
+
+    if(idea)
+        cout << "YES" << endl;
+    else
+        cout << "NO" << endl;
 
     return 0;
 }

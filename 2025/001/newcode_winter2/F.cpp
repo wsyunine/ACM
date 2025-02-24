@@ -1,4 +1,3 @@
-
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -18,6 +17,7 @@
 #include <vector>
 using namespace std;
 #define N 500010
+#define int long long
 template <typename T>
 inline void read(T& x)
 {
@@ -31,14 +31,14 @@ inline void read(T& x)
 }
 
 int T;
+int l, r;
 
-void solve() {}
-
-int main()
+signed main()
 {
     read(T);
     while(T--) {
-        solve();
+        read(l), read(r);
+        cout << r - l + 1 << endl;
     }
 
     return 0;
