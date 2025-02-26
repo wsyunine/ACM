@@ -1,3 +1,4 @@
+
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -17,6 +18,7 @@
 #include <vector>
 using namespace std;
 #define N 500010
+#define int long long
 template <typename T>
 inline void read(T& x)
 {
@@ -29,20 +31,31 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int n, q;
-int s[N];
-int e[N], ne[N], h[N], idx;
-vector<int> p[N];
+int t;
+int n;
+string str;
+int op1, op2 = 0;
 
-void add(int a, int b) { e[idx] = b, ne[idx] = h[a], h[a] = idx++; }
-
-int main()
+void solve()
 {
-    read(n), read(q);
-    for(int i = 1; i <= n; i++) {
-        read(s[i]);
-        for(int j = 1; j <= s[i]; j++) {
-        }
+    op1 = 0, op2 = 0;
+    read(n);
+    cin >> str;
+    for(int i = 0; i < n; i++) {
+        if(str[i] == '-')
+            op1++;
+        else
+            op2++;
+    }
+
+    cout << (op1 / 2) * (op1 - op1 / 2) * op2 << endl;
+}
+
+signed main()
+{
+    read(t);
+    while(t--) {
+        solve();
     }
 
     return 0;

@@ -1,3 +1,4 @@
+
 #include <algorithm>
 #include <bitset>
 #include <climits>
@@ -29,20 +30,39 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int n, q;
-int s[N];
-int e[N], ne[N], h[N], idx;
-vector<int> p[N];
+int t;
+int n;
+int sp[N];
 
-void add(int a, int b) { e[idx] = b, ne[idx] = h[a], h[a] = idx++; }
+void solve()
+{
+    read(n);
+    int xx = 0, yy = 0, sum = 0;
+    vector<pair<int, int>> ans;
+    while(n) {
+        int x = upper_bound(sp + 1, sp + 1 + 500, n) - sp - 1;
+        sum += x;
+        for(int i = yy + 1; i <= yy + x; i++) ans.push_back({xx, i});
+        yy = yy + x;
+        xx++;
+        n -= sp[x];
+    }
+
+    printf("%d\n", sum);
+    for(auto i : ans) {
+        printf("%d %d\n", i.first, i.second);
+    }
+}
 
 int main()
 {
-    read(n), read(q);
-    for(int i = 1; i <= n; i++) {
-        read(s[i]);
-        for(int j = 1; j <= s[i]; j++) {
-        }
+    for(int i = 2; i <= 500; i++) {
+        sp[i] = i * (i - 1) / 2;
+    }
+
+    read(t);
+    while(t--) {
+        solve();
     }
 
     return 0;

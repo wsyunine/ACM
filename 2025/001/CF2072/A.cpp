@@ -29,20 +29,30 @@ inline void read(T& x)
     if(flg) x = -x;
 }
 
-int n, q;
-int s[N];
-int e[N], ne[N], h[N], idx;
-vector<int> p[N];
+int t;
+int n, k, p;
 
-void add(int a, int b) { e[idx] = b, ne[idx] = h[a], h[a] = idx++; }
+void solve()
+{
+    read(n), read(k), read(p);
+    if(k == 0) {
+        cout << 0 << endl;
+        return;
+    }
+    k = abs(k);
+    int s = (k - 1) / p + 1;
+    if(s > n) {
+        cout << -1 << endl;
+        return;
+    }
+    cout << s << endl;
+}
 
 int main()
 {
-    read(n), read(q);
-    for(int i = 1; i <= n; i++) {
-        read(s[i]);
-        for(int j = 1; j <= s[i]; j++) {
-        }
+    read(t);
+    while(t--) {
+        solve();
     }
 
     return 0;

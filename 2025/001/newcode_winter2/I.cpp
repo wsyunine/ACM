@@ -40,58 +40,21 @@ long long ans = 0, rres = 0;
 
 void add(int a, int b) { e[idx] = b, ne[idx] = h[a], h[a] = idx++; }
 
-void dffs(int x, int fa)
+void dfs(int x, int fa, int id)
 {
+    dp[x][id][b[x][id]] = 1;
+    dp[x][id][b[x][id] ^ 1] = 0;
     sum[x] = 1;
     for(int i = h[x]; ~i; i = ne[i]) {
         int j = e[i];
         if(j == fa) continue;
-        dffs(j, x);
-        sum[x] *= (sum[j] + 1);
-    }
-}
-
-void dfs(int x, int fa, int id)
-{
-    if(b[x][id])
-        dp[x][id][1] = 1;
-    else
-        dp[x][id][0] = 1;
-    for(int i = h[x]; ~i; i = ne[i]) {
-        int j = e[i];
-        if(j == fa) continue;
         dfs(j, x, id);
-        dp[x][id][0] += dp[j][id][0];
-        dp[x][id][1] += dp[j][id][1];
-    }
-}
-
-void dfs1(int x, int fa, int id)
-{
-    int op0 = 0, op1 = 0;
-    if(b[x][id])
-        op1++;
-    else
-        op0++;
-    for(int i = h[x]; ~i; i = ne[i]) {
-        int j = e[i];
-        if(j == fa) continue;
-        dfs1(j, x, id);
-        res[x] += dp[j][id][0] * op1 + dp[j][id][1] * op0;
-        op1 += dp[j][id][1];
-        op0 += dp[j][id][0];
-    }
-}
-
-void dfs2(int x, int fa, int id)
-{
-    for(int i = h[x]; ~i; i = ne[i]) {
-        int j = e[i];
-        if(j == fa) continue;
-        dfs2(j, x, id);
-        (res[x] += ((dp[j][id][b[x][id] ^ 1] + res[j]) % Mod) * (sum[x] / (sum[j] + 1)) % Mod) %=
+        (res[x] += (res[j] * sum[x] % Mod + res[x] * sum[j] % Mod) % Mod) %= Mod;
+        (res[x] += (dp[x][id][0] * dp[j][id][1] % Mod + dp[j][id][0] * dp[x][id][1] % Mod) % Mod) %=
             Mod;
-        rres += res[x];
+        (dp[x][id][0] += (dp[j][id][0] * sum[x] % Mod + dp[x][id][0] * sum[j] % Mod) % Mod) %= Mod;
+        (dp[x][id][1] += (dp[j][id][1] * sum[x] % Mod + dp[x][id][1] * sum[j] % Mod) % Mod) %= Mod;
+        (sum[x] += sum[x] * sum[j] % Mod) %= Mod;
     }
 }
 
@@ -114,26 +77,20 @@ signed main()
         add(b, a);
     }
 
-    dffs(1, 1);
-
     // for(int i = 1; i <= n; i++) cout << sum[i] << " ";
     // cout << endl;
 
-    for(long long i = 0, j = 1; i <= 31; i++, j <<= 1) {
+    for(long long i = 0, j = 1; i <= 30; i++, j <<= 1ll) {
         j = j % Mod;
         dfs(1, 1, i);
-        // dfs1(1, 1, i);
-        dfs2(1, 1, i);
-        for(int j = 1; j <= n; j++) cout << res[j] << " ";
-        cout << endl;
-        cout << rres << endl;
-        if(rres & 1) (ans += j) %= Mod;
-        rres >>= 1;
+        for(int k = 1; k <= n; k++) (rres += res[k]) %= Mod;
+        (ans += rres * j % Mod) %= Mod;
+        rres = 0;
 
         for(int k = 1; k <= n; k++) res[k] = 0;
     }
 
-    cout << ans * 2 << endl;
+    cout << ans * 2ll % Mod << endl;
 
     return 0;
 }
