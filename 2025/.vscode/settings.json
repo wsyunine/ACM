@@ -1,8 +1,12 @@
 {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
     "files.associations": {
         "ostream": "cpp",
         "set": "cpp",
         "bitset": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iostream": "cpp",
+        "queue": "cpp"
     }
 }

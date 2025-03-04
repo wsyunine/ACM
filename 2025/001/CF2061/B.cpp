@@ -64,7 +64,7 @@ void solve()
                 cout << a[i] << " " << tmp << " " << tmp << " " << a[i + 3] << endl;
                 return;
             }
-            i = i + 3;
+            i = i + 2;
             continue;
         }
         if(a[i] + 2 * tmp > a[i + 1]) {
