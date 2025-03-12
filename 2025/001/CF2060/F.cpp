@@ -29,12 +29,18 @@ inline void read(T& x)
     for(; isdigit(c); c = getchar()) x = x * 10 + (c ^ 48);
     if(flg) x = -x;
 }
+const int Mod=998244353;
 
 int T;
 int n;
 int k;
 
-void solve() { read(n), read(k); }
+
+
+void solve() {
+    read(n), read(k); 
+    
+}
 
 int main()
 {
